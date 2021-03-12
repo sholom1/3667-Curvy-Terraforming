@@ -16,4 +16,14 @@ public class CurveFunctions
         Vector2 v1 = Quadratic(midSection1, midSection2, end, time);
         return Vector2.Lerp(v0, v1, time);
     }
+    public static Vector3[] toVector3Array(Vector2[] v2)
+    {
+        return System.Array.ConvertAll<Vector2, Vector3>(v2, getV3fromV2);
+    }
+
+    public static Vector3 getV3fromV2(Vector2 v2)
+    {
+        return new Vector3(v2.x, v2.y);
+    }
+
 }
