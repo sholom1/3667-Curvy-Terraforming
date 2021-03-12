@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(EdgeCollider2D), typeof(LineRenderer))]
+[ExecuteInEditMode]
 public abstract class Curve: MonoBehaviour
 {
     protected EdgeCollider2D edgeCollider;
