@@ -6,6 +6,10 @@ public class AnchorPointManipulator : MonoBehaviour
 {
     [SerializeField]
     private LayerMask AnchorLayer;
+    [SerializeField]
+    private float _ConnectionRange;
+    [SerializeField]
+    private AnchorLink _AnchorLinkPrefab;
 
     private new Camera camera;
 
@@ -34,7 +38,27 @@ public class AnchorPointManipulator : MonoBehaviour
         }
         if (_SelectedAnchor != null)
         {
+            Vector3 previousPosition = _SelectedAnchor.transform.position;
             _SelectedAnchor.Move(mouseWorldPos);
+            if (!_SelectedAnchor.HasLink() && previousPosition != _SelectedAnchor.transform.position)
+            {
+                AnchorPoint lastAnchor = null;
+                float lastDistance = float.MaxValue;
+                foreach (Curve curve in CurveManager.instance.ActiveCurves)
+                {
+                    if (curve == _SelectedAnchor.curve) continue;
+                    AnchorPoint closestAnchor = curve.GetClosestAnchor(_SelectedAnchor, _ConnectionRange);
+                    if (closestAnchor != null)
+                    {
+                        float distance = Vector2.Distance(closestAnchor.transform.position, _SelectedAnchor.transform.position);
+                        if (distance < lastDistance)
+                            lastAnchor = closestAnchor;
+                    }
+                }
+                if (lastAnchor == null || lastAnchor.HasLink()) return;
+                AnchorLink newLink = Instantiate(_AnchorLinkPrefab);
+                newLink.SetAnchors(_SelectedAnchor, lastAnchor);
+            }
         }
     }
 }

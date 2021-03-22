@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class LinearCurve : Curve
 {
-    [SerializeField]
-    private AnchorPoint _StartAnchor;
-    [SerializeField]
-    private AnchorPoint _EndAnchor;
+    
 
     public override void Compute()
     {

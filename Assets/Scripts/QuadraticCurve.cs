@@ -5,11 +5,7 @@ using UnityEngine;
 public class QuadraticCurve : Curve
 {
     [SerializeField]
-    private AnchorPoint _StartAnchor;
-    [SerializeField]
     private AnchorPoint _MiddleAnchor;
-    [SerializeField]
-    private AnchorPoint _EndAnchor;
     [SerializeField]
     [Range(10, 200)]
     private int _Iterations;
