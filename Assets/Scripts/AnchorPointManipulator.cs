@@ -6,14 +6,21 @@ public class AnchorPointManipulator : MonoBehaviour
 {
     [SerializeField]
     private LayerMask AnchorLayer;
-    [SerializeField]
-    private float _ConnectionRange;
+    
+    public float ConnectionRange;
     [SerializeField]
     private AnchorLink _AnchorLinkPrefab;
 
     private new Camera camera;
 
     private AnchorPoint _SelectedAnchor;
+
+    public static AnchorPointManipulator instance;
+    private void Awake()
+    {
+        if (instance != null) Destroy(instance);
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +54,7 @@ public class AnchorPointManipulator : MonoBehaviour
                 foreach (Curve curve in CurveManager.instance.ActiveCurves)
                 {
                     if (curve == _SelectedAnchor.curve) continue;
-                    AnchorPoint closestAnchor = curve.GetClosestAnchor(_SelectedAnchor, _ConnectionRange);
+                    AnchorPoint closestAnchor = curve.GetClosestAnchor(_SelectedAnchor, ConnectionRange);
                     if (closestAnchor != null)
                     {
                         float distance = Vector2.Distance(closestAnchor.transform.position, _SelectedAnchor.transform.position);

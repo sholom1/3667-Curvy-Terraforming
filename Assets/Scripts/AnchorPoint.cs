@@ -9,8 +9,13 @@ public class AnchorPoint : MonoBehaviour
     
     public void Move(Vector2 worldPos)
     {
-        transform.position = worldPos;
-        curve.Compute();
+        if (HasLink())
+            link.onMove(worldPos);
+        if (!HasLink() || !link.isConfirmed)
+        {
+            transform.position = worldPos;
+            curve.Compute();
+        }
     }
     public bool HasLink()
     {
@@ -21,5 +26,9 @@ public class AnchorPoint : MonoBehaviour
         if (HasLink())
             link = null;
         link = anchorLink;
+    }
+    public void RemoveLink()
+    {
+        link = null;
     }
 }

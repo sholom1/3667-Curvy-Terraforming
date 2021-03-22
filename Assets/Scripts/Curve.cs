@@ -38,6 +38,7 @@ public abstract class Curve: MonoBehaviour
 
     protected virtual void OnDestroy()
     {
+        if (CurveManager.instance != null)
         CurveManager.instance.ActiveCurves.Remove(this);
     }
 }
