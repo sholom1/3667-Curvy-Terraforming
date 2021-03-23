@@ -13,9 +13,14 @@ public class AnchorPointManipulator : MonoBehaviour
 
     private new Camera camera;
 
+    [SerializeField]
     private AnchorPoint _SelectedAnchor;
+    [SerializeField]
+    private AnchorPoint _PreviousAnchor;
 
     public static AnchorPointManipulator instance;
+
+    public List<AnchorPoint> StaticAnchors;
     private void Awake()
     {
         if (instance != null) Destroy(instance);
@@ -36,35 +41,52 @@ public class AnchorPointManipulator : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, camera.transform.forward, float.MaxValue, AnchorLayer);
             if (hit.collider != null && hit.collider.TryGetComponent(out AnchorPoint anchor))
             {
+                if (_PreviousAnchor != null && _PreviousAnchor.HasLink() && _PreviousAnchor.link.isConfirmed)
+                    _PreviousAnchor.link.gameObject.SetActive(false);
                 _SelectedAnchor = anchor;
             }
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            _PreviousAnchor = _SelectedAnchor != null ? _SelectedAnchor : _PreviousAnchor;
             _SelectedAnchor = null;
         }
         if (_SelectedAnchor != null)
         {
             Vector3 previousPosition = _SelectedAnchor.transform.position;
             _SelectedAnchor.Move(mouseWorldPos);
-            if (!_SelectedAnchor.HasLink() && previousPosition != _SelectedAnchor.transform.position)
+            if (previousPosition != _SelectedAnchor.transform.position)
             {
-                AnchorPoint lastAnchor = null;
-                float lastDistance = float.MaxValue;
-                foreach (Curve curve in CurveManager.instance.ActiveCurves)
+                if (!_SelectedAnchor.HasLink())
                 {
-                    if (curve == _SelectedAnchor.curve) continue;
-                    AnchorPoint closestAnchor = curve.GetClosestAnchor(_SelectedAnchor, ConnectionRange);
-                    if (closestAnchor != null)
+                    AnchorPoint lastAnchor = null;
+                    float lastDistance = float.MaxValue;
+                    //Find closest anchor under curves
+                    foreach (Curve curve in CurveManager.instance.ActiveCurves)
                     {
-                        float distance = Vector2.Distance(closestAnchor.transform.position, _SelectedAnchor.transform.position);
-                        if (distance < lastDistance)
-                            lastAnchor = closestAnchor;
+                        if (curve == _SelectedAnchor.curve) continue;
+                        AnchorPoint closestAnchor = curve.GetClosestAnchor(_SelectedAnchor, ConnectionRange);
+                        if (closestAnchor != null)
+                        {
+                            float distance = Vector2.Distance(closestAnchor.transform.position, _SelectedAnchor.transform.position);
+                            if (distance < lastDistance)
+                                lastAnchor = closestAnchor;
+                        }
                     }
+                    //Find closest static anchor
+                    foreach (AnchorPoint anchor in StaticAnchors)
+                    {
+                        float distance = Vector2.Distance(_SelectedAnchor.transform.position, anchor.transform.position);
+                        if (distance < lastDistance && distance < ConnectionRange)
+                        {
+                            lastAnchor = anchor;
+                            lastDistance = distance;
+                        }
+                    }
+                    if (lastAnchor == null || lastAnchor.HasLink()) return;
+                    AnchorLink newLink = Instantiate(_AnchorLinkPrefab);
+                    newLink.SetAnchors(_SelectedAnchor, lastAnchor);
                 }
-                if (lastAnchor == null || lastAnchor.HasLink()) return;
-                AnchorLink newLink = Instantiate(_AnchorLinkPrefab);
-                newLink.SetAnchors(_SelectedAnchor, lastAnchor);
             }
         }
     }

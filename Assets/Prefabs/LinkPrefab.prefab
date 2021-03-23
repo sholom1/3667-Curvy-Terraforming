@@ -48,6 +48,8 @@ MonoBehaviour:
   lineRenderer: {fileID: 8088096008890359614}
   isConfirmed: 0
   canvas: {fileID: 0}
+  ConfirmButton: {fileID: 4576027383170362982}
+  DeleteButton: {fileID: 900493054182302684}
 --- !u!120 &8088096008890359614
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -180,11 +182,11 @@ RectTransform:
   m_Father: {fileID: 6958768092969083509}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.92}
   m_SizeDelta: {x: 100, y: 30}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2576500756764275692
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -548,11 +550,11 @@ RectTransform:
   m_Father: {fileID: 6958768092969083509}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.88}
   m_SizeDelta: {x: 100, y: 30}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &4040787300712337245
 CanvasRenderer:
   m_ObjectHideFlags: 0
