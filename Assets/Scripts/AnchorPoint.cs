@@ -5,13 +5,19 @@ using UnityEngine;
 public class AnchorPoint : MonoBehaviour
 {
     public Curve curve;
-    private AnchorLink link;
-    
+    public AnchorLink link;
+
+    private void Start()
+    {
+        if (gameObject.isStatic)
+            AnchorPointManipulator.instance.StaticAnchors.Add(this);
+    }
+
     public void Move(Vector2 worldPos)
     {
         if (HasLink())
             link.onMove(worldPos);
-        if (!HasLink() || !link.isConfirmed)
+        if (!gameObject.isStatic && (!HasLink() || !link.isConfirmed))
         {
             transform.position = worldPos;
             curve.Compute();
