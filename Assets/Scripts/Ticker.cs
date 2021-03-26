@@ -6,8 +6,8 @@ public class Ticker : MonoBehaviour
 {
 
     public TickerItem tickerItemPrefab; //this is where we get the prefab item to populate our ticker  
-    [Range(1f, 10f)]
-    public float itemDuration = 3.0f;
+    [Range(1f, 20f)]
+    public float itemDuration = 10.0f;
     public string[] fillerItems;
 
     float width; //keep track of its own current width
