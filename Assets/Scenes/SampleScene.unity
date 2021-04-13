@@ -1094,7 +1094,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 48}
+  m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2074018533
 MonoBehaviour:
@@ -1111,9 +1111,21 @@ MonoBehaviour:
   tickerItemPrefab: {fileID: 4577682174020089997, guid: 560cb6c009d8e34458d79f00c6826127, type: 3}
   itemDuration: 6
   fillerItems:
-  - Hello world
-  - Ticker item 1
-  - Ticker item 2
+  - "Hunan Province is a land-locked inland province in central-southern China -
+    this means it is surrounded by land on all sides. Hunan was the birthplace of
+    communist revolutionary Mao Zedong, who became the founding father of the People's
+    Republic of China. Hunan cuisine is known for its distinctive dry-and-spicy taste,
+    and is known for its use of chili peppers, garlic, and shallots.  Hunan is known
+    for its exports of apparel, shoes, ceramics, steel, rhubarb, musk, honey, hemp,
+    and birds. Hunan covers 2 percent of China\u2019s land mass.  Xiangjiang River
+    is the largest river in the Hunan Province region. The capital and most important
+    city of the Hunan Province is Changsha, situated in the northeast, on the banks
+    of the Xiang River. The Tianzi Shan Mountains are named after the early Ming
+    dynasty's farmer Xiang Dakun, who led a successful local farmers' revolt. The
+    Tianzi Shan Mountains inspired the \"Pandora\" mountainscape in the film Avatar.
+    The Tianzi Mountains have the most stunning peaks, and are well-known for the
+    four wonders - the Sea of Clouds, the Radiance of the Moonlight, Rays of Sunshine,
+    and the Snow in winter."
 --- !u!114 &2074018534
 MonoBehaviour:
   m_ObjectHideFlags: 0
