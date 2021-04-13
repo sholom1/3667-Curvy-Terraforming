@@ -6,6 +6,7 @@ public class TriggerEvent : MonoBehaviour
 {
     
     public GameObject prefab;
+    public bool destroyText;
     //public Vector3 positionPlaced;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -16,6 +17,12 @@ public class TriggerEvent : MonoBehaviour
         Instantiate(prefab, transform.position, Quaternion.identity);
         }
         
+    }
+    
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        Destroy(prefab);
     }
 
 
