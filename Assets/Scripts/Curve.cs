@@ -18,7 +18,8 @@ public abstract class Curve: MonoBehaviour
     {
         edgeCollider = GetComponent<EdgeCollider2D>();
         lineRenderer = GetComponent<LineRenderer>();
-        CurveManager.instance.ActiveCurves.Add(this);
+        if (CurveManager.instance != null)
+            CurveManager.instance.ActiveCurves.Add(this);
         Compute();
     }
     public abstract void Compute();

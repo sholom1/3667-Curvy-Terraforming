@@ -6,7 +6,7 @@ public class Ticker : MonoBehaviour
 {
 
     public TickerItem tickerItemPrefab; //this is where we get the prefab item to populate our ticker  
-    [Range(1f, 20f)]
+    [Range(1f, 40f)]
     public float itemDuration = 10.0f;
     public string[] fillerItems;
 
@@ -18,7 +18,7 @@ public class Ticker : MonoBehaviour
     void Start()
     {
         width = GetComponent<RectTransform>().rect.width;
-        pixelsPerSecond = width / itemDuration;
+        pixelsPerSecond = (width / itemDuration)/2.0f;
         AddTickerItem(fillerItems[0]); 
         
     }
@@ -26,10 +26,10 @@ public class Ticker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentItem.GetXPosition <= -currentItem.GetWidth)
-        {
-            AddTickerItem(fillerItems[Random.Range(0, fillerItems.Length)]); 
-        }
+       // if (currentItem.GetXPosition <= -currentItem.GetWidth)                //issue here? 
+       // {
+         //   AddTickerItem(fillerItems[Random.Range(0, fillerItems.Length)]); 
+        // }
     }
 
     void AddTickerItem(string message) {
