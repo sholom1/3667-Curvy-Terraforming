@@ -6,24 +6,32 @@ public class TriggerEvent : MonoBehaviour
 {
     
     public GameObject prefab;
-    public bool destroyText;
+    //public GameObject prefab2;
+    public float pointA;
+    public float pointB;
+    public float pointC;
+    public float lifetime = 2;
+    //public bool destroyText;
     //public Vector3 positionPlaced;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject prefab2;
+        //float lifetime = 2;
         //positionPlaced = transform.position;
         if (collision.gameObject.tag == "Player")
         {
-        Instantiate(prefab, transform.position, Quaternion.identity);
+        prefab2 = Instantiate(prefab, new Vector3(pointA, pointB, pointC), Quaternion.identity);
+        Destroy(prefab2, lifetime);
         }
         
     }
     
 
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        Destroy(prefab);
-    }
+    // void OnTriggerExit2D(Collider2D collision)
+    // {
+    //    Destroy(prefab2, lifetime);
+    // }
 
 
 }

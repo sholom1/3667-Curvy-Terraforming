@@ -6,8 +6,7 @@ public class AutoFishFallMovement : MonoBehaviour
 {
     [SerializeField] Vector3 movement;
 	[SerializeField] Rigidbody2D rigid;
-	[SerializeField] float speed = 10.0f;
-	[SerializeField] bool isFacingRight = true;
+	//[SerializeField] float speed = 10.0f;
 
    
     public Vector3 pointB;

@@ -6,9 +6,9 @@ public class HorizontalAutoMove : MonoBehaviour
 {
     [SerializeField] Vector3 movement;
 	[SerializeField] Rigidbody2D rigid;
-	[SerializeField] float speed = 10.0f;
-	[SerializeField] bool isFacingRight = false;
-    [SerializeField] bool isFacingLeft = false;
+	//[SerializeField] float speed = 10.0f;
+	//[SerializeField] bool isFacingRight = false;
+    //[SerializeField] bool isFacingLeft = false;
 
    
     public Vector3 pointB;
@@ -48,6 +48,6 @@ public class HorizontalAutoMove : MonoBehaviour
 
         //transform.Rotate(0, 180, 0);
 
-        isFacingLeft = !isFacingLeft;
+        //isFacingLeft = !isFacingLeft;
 	}
 }
