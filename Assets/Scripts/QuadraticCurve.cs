@@ -32,7 +32,7 @@ public class QuadraticCurve : Curve
         lineRenderer.SetPositions(CurveFunctions.toVector3Array(points));
     }
 
-    public override string GetCurveFunction()
+    public override void UpdateCurveFunction()
     {
         throw new System.NotImplementedException();
     }
