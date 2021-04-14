@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UI_Assistant : MonoBehaviour
 {
+    [SerializeField] private TextWriter textWriter;
     private Text messageText;
 
     private void Awake(){
@@ -12,12 +13,9 @@ public class UI_Assistant : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        messageText.text = "Hello World!";
+        //messageText.text = "Hello World!";
+        textWriter.AddWriter(messageText, "Hello World!", 1f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
