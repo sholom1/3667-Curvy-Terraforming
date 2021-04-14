@@ -2949,9 +2949,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello. I'm just some Hat On A Stick laying around. Looks Like are stuck
-    here. But looks like you have enough cash on you to buy your way out...by placing
-    wood!
+  m_text: Hello! I am just some Hat On A Stick laying around. Looks like you are
+    stuck. Luckily you have enough cash buy your way out. Use the wood to build a
+    bridge!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
