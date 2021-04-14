@@ -24,7 +24,7 @@ public abstract class Curve: MonoBehaviour
     }
     public abstract void Compute();
 
-    public abstract string GetCurveFunction();
+    public abstract void UpdateCurveFunction();
 
     public AnchorPoint GetClosestAnchor(AnchorPoint other, float linkRange)
     {

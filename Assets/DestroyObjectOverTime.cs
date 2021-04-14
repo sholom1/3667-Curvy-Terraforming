@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class DestroyObjectOverTime : MonoBehaviour
 {
-    public float lifetime;
+    //public float lifetime;
+    public GameObject prefab;
     
-    void Update()
+    public void timeToDestroy()
     {
+        float lifetime = 2;
         lifetime -= Time.deltaTime;
         if(lifetime < 0)
         {
