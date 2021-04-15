@@ -11,7 +11,7 @@ public class Death : MonoBehaviour
         if (collision.gameObject.CompareTag("Abyss"))
         {
         Destroy(gameObject);
-        respawn.instance.RespawnPoint();
+        respawn.instance.RespawningPoint();
         }
         
     }

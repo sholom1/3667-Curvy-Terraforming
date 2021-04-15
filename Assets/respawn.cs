@@ -15,7 +15,7 @@ public class respawn : MonoBehaviour
     
 
     
-    public void RespawnPoint()
+    public void RespawningPoint()
     {
         Instantiate(carPrefab, respawnPoint.position, Quaternion.identity);
     }
