@@ -23,6 +23,7 @@ public class CurveManager : MonoBehaviour
         if (isPlacingCurve && Input.GetKeyDown(KeyCode.Mouse0) && !EventSystem.current.IsPointerOverGameObject())
         {
             Debug.Log("Placing Curve");
+            SelectedCurve.edgeCollider.enabled = true;
             SelectedCurve = null;
             isPlacingCurve = false;
         }

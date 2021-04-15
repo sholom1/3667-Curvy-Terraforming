@@ -6,7 +6,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public abstract class Curve: MonoBehaviour
 {
-    protected EdgeCollider2D edgeCollider;
+    public EdgeCollider2D edgeCollider;
     protected LineRenderer lineRenderer;
 
     [SerializeField]

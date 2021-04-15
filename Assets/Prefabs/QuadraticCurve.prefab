@@ -43,7 +43,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7907640192497018176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -564,6 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6b58bdd4b699c4aa41b2498fe909c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  edgeCollider: {fileID: 0}
   _StartAnchor: {fileID: 468968726337258937}
   _EndAnchor: {fileID: 468968726510491348}
   _MiddleAnchor: {fileID: 468968725973771207}
