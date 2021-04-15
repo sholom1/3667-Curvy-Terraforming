@@ -10,6 +10,8 @@ public class CurveManager : MonoBehaviour
     public bool isPlacingCurve;
     private Curve SelectedCurve;
     private new Camera camera;
+    [SerializeField]
+    private GameObject ButtonContainter;
     private void Awake()
     {
         if (instance != null) Destroy(instance);
@@ -29,6 +31,13 @@ public class CurveManager : MonoBehaviour
             Vector2 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
             SelectedCurve.transform.position = mouseWorldPos;
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (SelectedCurve != null)
+                Destroy(SelectedCurve);
+            ButtonContainter.SetActive(!ButtonContainter.activeInHierarchy);
+        }
+        
     }
     public void SpawnCurve(Curve curve)
     {
