@@ -7,9 +7,9 @@ public class TriggerEvent : MonoBehaviour
     
     public GameObject prefab;
     //public GameObject prefab2;
-    public float pointA;
-    public float pointB;
-    public float pointC;
+    public float x;
+    public float y;
+    public float z;
     public float lifetime = 2;
     //public bool destroyText;
     //public Vector3 positionPlaced;
@@ -21,7 +21,7 @@ public class TriggerEvent : MonoBehaviour
         //positionPlaced = transform.position;
         if (collision.gameObject.tag == "Player")
         {
-        prefab2 = Instantiate(prefab, new Vector3(pointA, pointB, pointC), Quaternion.identity);
+        prefab2 = Instantiate(prefab, new Vector3(x, y, z), Quaternion.identity);
         Destroy(prefab2, lifetime);
         }
         
