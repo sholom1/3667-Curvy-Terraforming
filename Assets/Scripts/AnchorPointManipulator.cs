@@ -51,7 +51,7 @@ public class AnchorPointManipulator : MonoBehaviour
             _PreviousAnchor = _SelectedAnchor != null ? _SelectedAnchor : _PreviousAnchor;
             _SelectedAnchor = null;
         }
-        if (_SelectedAnchor != null)
+        if (_SelectedAnchor != null && !_SelectedAnchor.gameObject.isStatic)
         {
             Vector3 previousPosition = _SelectedAnchor.transform.position;
             _SelectedAnchor.Move(mouseWorldPos);
