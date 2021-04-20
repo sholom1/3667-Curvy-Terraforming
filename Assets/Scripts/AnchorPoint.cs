@@ -6,10 +6,11 @@ public class AnchorPoint : MonoBehaviour
 {
     public Curve curve;
     public AnchorLink link;
+    public bool isStatic = false;
 
     private void Start()
     {
-        if (gameObject.isStatic)
+        if (isStatic)
             AnchorPointManipulator.instance.StaticAnchors.Add(this);
     }
 
@@ -17,7 +18,7 @@ public class AnchorPoint : MonoBehaviour
     {
         if (HasLink())
             link.onMove(worldPos);
-        if (!gameObject.isStatic && (!HasLink() || !link.isConfirmed))
+        if (!isStatic && (!HasLink() || !link.isConfirmed))
         {
             transform.position = worldPos;
             curve.Compute();

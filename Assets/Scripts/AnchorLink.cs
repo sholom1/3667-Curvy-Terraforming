@@ -17,13 +17,14 @@ public class AnchorLink : MonoBehaviour
     [SerializeField]
     private Button DeleteButton;
 
-    private bool isStaticLink => _RightAnchor.gameObject.isStatic || _LeftAnchor.gameObject.isStatic;
+    private bool isStaticLink => _RightAnchor.isStatic || _LeftAnchor.isStatic;
 
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         canvas = GetComponentInChildren<Canvas>();
         canvas.worldCamera = Camera.main;
+        onMove += _ => Debug.Log("AnchorPoint Moved");
     }
     public void SetAnchors(AnchorPoint rhs, AnchorPoint lhs)
     {
@@ -46,8 +47,8 @@ public class AnchorLink : MonoBehaviour
         }
         else
         {
-            AnchorPoint staticAnchor = _RightAnchor.gameObject.isStatic ? _RightAnchor : _LeftAnchor;
-            AnchorPoint antiStatic = !_RightAnchor.gameObject.isStatic ? _RightAnchor : _LeftAnchor;
+            AnchorPoint staticAnchor = _RightAnchor.isStatic ? _RightAnchor : _LeftAnchor;
+            AnchorPoint antiStatic = !_RightAnchor.isStatic ? _RightAnchor : _LeftAnchor;
             antiStatic.transform.position = staticAnchor.transform.position;
             antiStatic.curve.Compute();
         }
@@ -58,12 +59,12 @@ public class AnchorLink : MonoBehaviour
     }
     public void UpdateLink(Vector2 position)
     {
-        if (!_RightAnchor.gameObject.isStatic)
+        if (!_RightAnchor.isStatic)
         {
             _RightAnchor.transform.position = position;
             _RightAnchor.curve.Compute();
         }
-        if (!_LeftAnchor.gameObject.isStatic)
+        if (!_LeftAnchor.isStatic)
         {
             _LeftAnchor.transform.position = position;
             _LeftAnchor.curve.Compute();
@@ -87,9 +88,9 @@ public class AnchorLink : MonoBehaviour
         _LeftAnchor.RemoveLink();
         if (isConfirmed)
         {
-            if (!_LeftAnchor.gameObject.isStatic)
+            if (!_LeftAnchor.isStatic)
                 _LeftAnchor.Move(transform.position - transform.right);
-            if (!_RightAnchor.gameObject.isStatic)
+            if (!_RightAnchor.isStatic)
                 _RightAnchor.Move(transform.position + transform.right);
         }
         Destroy(gameObject);
