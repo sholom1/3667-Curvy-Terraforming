@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using static CurveFunctions;
 public class LinearCurve : Curve
 {
     [SerializeField]
@@ -23,7 +24,7 @@ public class LinearCurve : Curve
 
         fractionContainer.SetActive(true);
         float slope = diff.x / diff.y;
-        CurveFunctions.Fraction fraction = CurveFunctions.RealToFraction(slope, 0.01);
+        Fraction fraction = RealToFraction(slope, 0.01);
         slopeNumerator.text = fraction.N.ToString();
         slopeDenominator.text = fraction.D.ToString();
         float b = _StartAnchor.transform.position.y - (slope * _StartAnchor.transform.position.x);
