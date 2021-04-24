@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class CurveManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class CurveManager : MonoBehaviour
     public static CurveManager instance;
     public List<Curve> ActiveCurves;
     public bool isPlacingCurve;
+    public UnityEvent<bool> OnToggleBuildMode;
     private Curve SelectedCurve;
     private new Camera camera;
     [SerializeField]
@@ -37,6 +39,7 @@ public class CurveManager : MonoBehaviour
             if (SelectedCurve != null)
                 Destroy(SelectedCurve);
             ButtonContainter.SetActive(!ButtonContainter.activeInHierarchy);
+            OnToggleBuildMode.Invoke(ButtonContainter.activeInHierarchy);
         }
         
     }
