@@ -95,4 +95,11 @@ public class AnchorLink : MonoBehaviour
         }
         Destroy(gameObject);
     }
+    public void ToggleColliders(bool value)
+    {
+        if (!_LeftAnchor.isStatic)
+            _LeftAnchor.curve.edgeCollider.enabled = value;
+        if (!_RightAnchor.isStatic)
+            _RightAnchor.curve.edgeCollider.enabled = value;
+    }
 }

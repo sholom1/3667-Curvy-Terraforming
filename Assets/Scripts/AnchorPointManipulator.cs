@@ -41,14 +41,25 @@ public class AnchorPointManipulator : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, camera.transform.forward, float.MaxValue, AnchorLayer);
             if (hit.collider != null && hit.collider.TryGetComponent(out AnchorPoint anchor))
             {
+                //Hide Link confirmation UI of previous link
                 if (_PreviousAnchor != null && _PreviousAnchor.HasLink() && _PreviousAnchor.link.isConfirmed)
                     _PreviousAnchor.link.gameObject.SetActive(false);
+                
+                if (anchor.HasLink())
+                    anchor.link.ToggleColliders(false);
+                else
+                    anchor.curve.edgeCollider.enabled = false;
+                
                 _SelectedAnchor = anchor;
             }
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             _PreviousAnchor = _SelectedAnchor != null ? _SelectedAnchor : _PreviousAnchor;
+            if (_PreviousAnchor != null && _PreviousAnchor.HasLink())
+                _PreviousAnchor.link.ToggleColliders(true);
+            else
+                _PreviousAnchor.curve.edgeCollider.enabled = true;
             _SelectedAnchor = null;
         }
         if (_SelectedAnchor != null && !_SelectedAnchor.isStatic)
