@@ -1,23 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float walkSpeed = 10.0f;
-    public bool CanMove = true;
-
+    [SerializeField]
+    private new Rigidbody2D rigidbody;
+    private WheelsRotate[] wheels;
+    private float inputAxis;
+    private void Start()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+        wheels = GetComponentsInChildren<WheelsRotate>();
+    }
+    private void Update()
+    {
+        inputAxis = Input.GetAxis("Horizontal");
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (CanMove)
+        if (canMove)
         {
-            float move = Input.GetAxis("Horizontal");
-
-            if (move < 0)
-                GetComponent<Rigidbody2D>().velocity = new Vector3(move * walkSpeed, GetComponent<Rigidbody2D>().velocity.y);
-            if (move > 0)
-                GetComponent<Rigidbody2D>().velocity = new Vector3(move * walkSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            if (inputAxis < 0)
+                rigidbody.velocity = new Vector3(inputAxis * walkSpeed, rigidbody.velocity.y);
+            if (inputAxis > 0)
+                rigidbody.velocity = new Vector3(inputAxis * walkSpeed, rigidbody.velocity.y);
+        }
+    }
+    private bool canMove = true;
+    public bool CanMove
+    {
+        get { return canMove; }
+        set
+        {
+            if (value != canMove)
+            {
+                canMove = value;
+                Array.ForEach(wheels, wheel => wheel.enabled = value);
+            }
         }
     }
 }
