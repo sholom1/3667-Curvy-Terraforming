@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         wheels = GetComponentsInChildren<WheelsRotate>();
+        CurveManager.instance.OnToggleBuildMode.AddListener(value => CanMove = !value);
     }
     private void Update()
     {
