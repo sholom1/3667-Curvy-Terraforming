@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 740374858}
   - component: {fileID: 740374857}
   m_Layer: 5
-  m_Name: MainMenuText
+  m_Name: OptionsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Options
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3f30685706dc324c8b0f95ce9c857d6, type: 2}
   m_sharedMaterial: {fileID: 5639397727145155098, guid: c3f30685706dc324c8b0f95ce9c857d6, type: 2}
@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 1721679201}
   - component: {fileID: 1721679202}
   m_Layer: 5
-  m_Name: MainMenu
+  m_Name: OptionsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
