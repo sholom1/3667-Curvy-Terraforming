@@ -38,29 +38,11 @@ public class AnchorPointManipulator : MonoBehaviour
         Vector2 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, camera.transform.forward, float.MaxValue, AnchorLayer);
-            if (hit.collider != null && hit.collider.TryGetComponent(out AnchorPoint anchor))
-            {
-                //Hide Link confirmation UI of previous link
-                if (_PreviousAnchor != null && _PreviousAnchor.HasLink() && _PreviousAnchor.link.isConfirmed)
-                    _PreviousAnchor.link.gameObject.SetActive(false);
-                
-                if (anchor.HasLink())
-                    anchor.link.ToggleColliders(false);
-                else
-                    anchor.curve.edgeCollider.enabled = false;
-                
-                _SelectedAnchor = anchor;
-            }
+            SetSelectedAnchor(mouseWorldPos);
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            _PreviousAnchor = _SelectedAnchor != null ? _SelectedAnchor : _PreviousAnchor;
-            if (_PreviousAnchor != null && _PreviousAnchor.HasLink())
-                _PreviousAnchor.link.ToggleColliders(true);
-            else
-                _PreviousAnchor.curve.edgeCollider.enabled = true;
-            _SelectedAnchor = null;
+            ReleaseAnchor();
         }
         if (_SelectedAnchor != null && !_SelectedAnchor.isStatic)
         {
@@ -100,5 +82,33 @@ public class AnchorPointManipulator : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void SetSelectedAnchor(Vector2 mouseWorldPos)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, camera.transform.forward, float.MaxValue, AnchorLayer);
+        if (hit.collider != null && hit.collider.TryGetComponent(out AnchorPoint anchor))
+        {
+            //Hide Link confirmation UI of previous link
+            if (_PreviousAnchor != null && _PreviousAnchor.HasLink() && _PreviousAnchor.link.isConfirmed)
+                _PreviousAnchor.link.gameObject.SetActive(false);
+
+            if (anchor.HasLink())
+                anchor.link.ToggleColliders(false);
+            else
+                anchor.curve.edgeCollider.enabled = false;
+
+            _SelectedAnchor = anchor;
+        }
+    }
+
+    private void ReleaseAnchor()
+    {
+        _PreviousAnchor = _SelectedAnchor != null ? _SelectedAnchor : _PreviousAnchor;
+        if (_PreviousAnchor != null && _PreviousAnchor.HasLink())
+            _PreviousAnchor.link.ToggleColliders(true);
+        else
+            _PreviousAnchor.curve.edgeCollider.enabled = true;
+        _SelectedAnchor = null;
     }
 }
