@@ -20,4 +20,9 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Options");
     }
 
+    public void GoToHowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
+
 }
