@@ -21,6 +21,9 @@ public class AnchorPointManipulator : MonoBehaviour
     public static AnchorPointManipulator instance;
 
     public List<AnchorPoint> StaticAnchors;
+
+    [SerializeField]
+    private bool isInBuildMode = false;
     private void Awake()
     {
         if (instance != null) Destroy(instance);
@@ -30,11 +33,14 @@ public class AnchorPointManipulator : MonoBehaviour
     void Start()
     {
         camera = Camera.main;
+        if (CurveManager.instance)
+            CurveManager.instance.OnToggleBuildMode.AddListener(value => isInBuildMode = value);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isInBuildMode) return;
         Vector2 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
