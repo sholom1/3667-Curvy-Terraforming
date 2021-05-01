@@ -7019,6 +7019,7 @@ MonoBehaviour:
   OnToggleBuildMode:
     m_PersistentCalls:
       m_Calls: []
+  isInBuildZone: 0
   ButtonContainter: {fileID: 1995384807}
 --- !u!114 &1481114119
 MonoBehaviour:
