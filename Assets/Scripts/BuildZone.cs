@@ -14,6 +14,7 @@ public class BuildZone : MonoBehaviour
     {
         if (collision.TryGetComponent(out PlayerMovement player) && CurveManager.instance != null)
         {
+            CurveManager.instance.isInBuildZone = true;
             CurveManager.instance.OnToggleBuildMode.AddListener(ToggleBuildMode);
         }
     }
@@ -21,6 +22,7 @@ public class BuildZone : MonoBehaviour
     {
         if (collision.TryGetComponent(out PlayerMovement player) && CurveManager.instance != null)
         {
+            CurveManager.instance.isInBuildZone = false;
             CurveManager.instance.OnToggleBuildMode.RemoveListener(ToggleBuildMode);
         }
     }

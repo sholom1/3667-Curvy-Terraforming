@@ -10,6 +10,7 @@ public class CurveManager : MonoBehaviour
     public List<Curve> ActiveCurves;
     public bool isPlacingCurve;
     public UnityEvent<bool> OnToggleBuildMode;
+    public bool isInBuildZone;
     private Curve SelectedCurve;
     private new Camera camera;
     [SerializeField]
@@ -34,7 +35,7 @@ public class CurveManager : MonoBehaviour
             Vector2 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
             SelectedCurve.transform.position = mouseWorldPos;
         }
-        if (Input.GetKeyDown(KeyCode.B))
+        if (isInBuildZone && Input.GetKeyDown(KeyCode.B))
         {
             if (SelectedCurve != null)
                 Destroy(SelectedCurve);
