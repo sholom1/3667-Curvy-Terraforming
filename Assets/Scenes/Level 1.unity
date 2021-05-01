@@ -6449,7 +6449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickerItemPrefab: {fileID: 4577682174020089997, guid: 560cb6c009d8e34458d79f00c6826127, type: 3}
-  itemDuration: 6
+  itemDuration: 7
   fillerItems:
   - "Hunan Province is a land-locked inland province in central-southern China -
     this means it is surrounded by land on all sides. Hunan was the birthplace of
@@ -6480,7 +6480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -8150,7 +8150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705328336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 4.1912622, z: -10}
+  m_LocalPosition: {x: 7.3232365, y: 4.1912622, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
