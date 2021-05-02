@@ -962,9 +962,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 379815615}
-        m_TargetAssemblyTypeName: MusicPlayer, Assembly-CSharp
-        m_MethodName: updateVolume
+      - m_Target: {fileID: 1135391104}
+        m_TargetAssemblyTypeName: audioListener, Assembly-CSharp
+        m_MethodName: ChangeVol
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -985,6 +985,7 @@ GameObject:
   - component: {fileID: 1135391103}
   - component: {fileID: 1135391102}
   - component: {fileID: 1135391101}
+  - component: {fileID: 1135391104}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1057,6 +1058,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1135391104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135391100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b28e63e9b4e2746a13a90b3f14cd4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1246403205
 GameObject:
   m_ObjectHideFlags: 0
