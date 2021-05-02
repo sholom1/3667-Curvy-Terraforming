@@ -9,12 +9,10 @@ public abstract class Curve: MonoBehaviour
     public EdgeCollider2D edgeCollider;
     protected LineRenderer lineRenderer;
 
-    [SerializeField]
-    protected AnchorPoint _StartAnchor;
-    [SerializeField]
-    protected AnchorPoint _EndAnchor;
+    public AnchorPoint StartAnchor;
+    public AnchorPoint EndAnchor;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         edgeCollider = GetComponent<EdgeCollider2D>();
         lineRenderer = GetComponent<LineRenderer>();
@@ -28,12 +26,12 @@ public abstract class Curve: MonoBehaviour
 
     public AnchorPoint GetClosestAnchor(AnchorPoint other, float linkRange)
     {
-        float distanceToStart = Vector2.Distance(other.transform.position, _StartAnchor.transform.position);
-        float distanceToEnd = Vector2.Distance(other.transform.position, _EndAnchor.transform.position);
+        float distanceToStart = Vector2.Distance(other.transform.position, StartAnchor.transform.position);
+        float distanceToEnd = Vector2.Distance(other.transform.position, EndAnchor.transform.position);
         if (distanceToStart < linkRange && distanceToStart < distanceToEnd)
-            return _StartAnchor;
+            return StartAnchor;
         if (distanceToEnd < linkRange && distanceToEnd < distanceToStart)
-            return _EndAnchor;
+            return EndAnchor;
         return null;
     }
 
@@ -41,5 +39,10 @@ public abstract class Curve: MonoBehaviour
     {
         if (CurveManager.instance != null)
         CurveManager.instance.ActiveCurves.Remove(this);
+    }
+    public virtual void MarkStatic(bool value)
+    {
+        StartAnchor.isStatic = value;
+        EndAnchor.isStatic = value;
     }
 }

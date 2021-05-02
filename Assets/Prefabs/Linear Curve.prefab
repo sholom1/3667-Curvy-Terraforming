@@ -280,8 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeCollider: {fileID: 991161247031749604}
-  _StartAnchor: {fileID: 991161246829927235}
-  _EndAnchor: {fileID: 6126474384508865472}
+  StartAnchor: {fileID: 991161246829927235}
+  EndAnchor: {fileID: 6126474384508865472}
   slope: {fileID: 0}
   slopeDenominator: {fileID: 3292596649543104929}
   slopeNumerator: {fileID: 3296582018220055426}

@@ -48,6 +48,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: car
+  - name: Anchor
+    uniqueID: 1379839697
+    locked: 0
+  - name: Car
     uniqueID: 2583095587
     locked: 0

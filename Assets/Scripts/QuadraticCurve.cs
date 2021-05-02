@@ -7,8 +7,7 @@ using static CurveFunctions;
 [RequireComponent(typeof(EdgeCollider2D), typeof(LineRenderer))]
 public class QuadraticCurve : Curve
 {
-    [SerializeField]
-    private AnchorPoint _MiddleAnchor;
+    public AnchorPoint MiddleAnchor;
     [SerializeField]
     [Range(10, 200)]
     private int _Iterations;
@@ -20,11 +19,11 @@ public class QuadraticCurve : Curve
     public override void Compute()
     {
         Vector2[] points = new Vector2[_Iterations];
-        Vector2 startPos = _StartAnchor.transform.localPosition;
-        Vector2 endPos = _EndAnchor.transform.localPosition;
-        Vector2 midPos = (_StartAnchor.transform.localPosition + _EndAnchor.transform.localPosition) / 2;
-        midPos.y = _MiddleAnchor.transform.localPosition.y;
-        _MiddleAnchor.transform.localPosition = midPos;
+        Vector2 startPos = StartAnchor.transform.localPosition;
+        Vector2 endPos = EndAnchor.transform.localPosition;
+        Vector2 midPos = (StartAnchor.transform.localPosition + EndAnchor.transform.localPosition) / 2;
+        midPos.y = MiddleAnchor.transform.localPosition.y;
+        MiddleAnchor.transform.localPosition = midPos;
         points[0] = startPos;
         points[_Iterations - 1] = endPos;
         curveLength = 0;
@@ -42,9 +41,9 @@ public class QuadraticCurve : Curve
 
     public override void UpdateCurveFunction()
     {
-        Vector2 startPos = _StartAnchor.transform.localPosition;
-        Vector2 midPos = _MiddleAnchor.transform.localPosition;
-        Vector2 endPos = _EndAnchor.transform.localPosition;
+        Vector2 startPos = StartAnchor.transform.localPosition;
+        Vector2 midPos = MiddleAnchor.transform.localPosition;
+        Vector2 endPos = EndAnchor.transform.localPosition;
         float a = (startPos.y - 2 * midPos.y + endPos.y) / Mathf.Pow(endPos.x - startPos.x, 2);
         float b = (2 / Mathf.Pow(endPos.x - startPos.x, 2)) * (endPos.x * (midPos.y - startPos.y) + startPos.x * (midPos.y - endPos.y));
         float c = startPos.y - (a * (startPos.x * startPos.x) + b * startPos.x);
@@ -55,5 +54,10 @@ public class QuadraticCurve : Curve
         bNumerator.text = bFrac.N.ToString();
         bDenominator.text = bFrac.D.ToString();
         cText.text = c.ToString("0.00");
+    }
+    public override void MarkStatic(bool value)
+    {
+        base.MarkStatic(value);
+        MiddleAnchor.isStatic = value;
     }
 }

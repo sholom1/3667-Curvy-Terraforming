@@ -111,7 +111,8 @@ public class AnchorPointManipulator : MonoBehaviour
     private void ReleaseAnchor()
     {
         _PreviousAnchor = _SelectedAnchor != null ? _SelectedAnchor : _PreviousAnchor;
-        if (_PreviousAnchor != null && _PreviousAnchor.HasLink())
+        if (_PreviousAnchor == null) return;
+        if (_PreviousAnchor.HasLink())
             _PreviousAnchor.link.ToggleColliders(true);
         else
             _PreviousAnchor.curve.edgeCollider.enabled = true;

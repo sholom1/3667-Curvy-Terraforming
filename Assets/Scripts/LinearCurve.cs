@@ -11,8 +11,8 @@ public class LinearCurve : Curve
     private GameObject fractionContainer;
     public override void Compute()
     {
-        Vector2[] points2D = new Vector2[] { _StartAnchor.transform.localPosition, _EndAnchor.transform.localPosition };
-        Vector3[] points3D = new Vector3[] { _StartAnchor.transform.localPosition, _EndAnchor.transform.localPosition };
+        Vector2[] points2D = new Vector2[] { StartAnchor.transform.localPosition, EndAnchor.transform.localPosition };
+        Vector3[] points3D = new Vector3[] { StartAnchor.transform.localPosition, EndAnchor.transform.localPosition };
         edgeCollider.points = points2D;
         lineRenderer.SetPositions(points3D);
         UpdateCurveFunction();
@@ -20,14 +20,14 @@ public class LinearCurve : Curve
 
     public override void UpdateCurveFunction()
     {
-        Vector2 diff = _StartAnchor.transform.position - _EndAnchor.transform.position;
+        Vector2 diff = StartAnchor.transform.position - EndAnchor.transform.position;
 
         fractionContainer.SetActive(true);
         float slope = diff.x / diff.y;
         Fraction fraction = RealToFraction(slope, 0.01);
         slopeNumerator.text = fraction.N.ToString();
         slopeDenominator.text = fraction.D.ToString();
-        float b = _StartAnchor.transform.position.y - (slope * _StartAnchor.transform.position.x);
+        float b = StartAnchor.transform.position.y - (slope * StartAnchor.transform.position.x);
         function.text = $"x + {b.ToString("0.00")}";
     }
 }

@@ -46,9 +46,13 @@ public class CurveManager : MonoBehaviour
     }
     public void SpawnCurve(Curve curve)
     {
+        SetSelectedCurve(Instantiate(curve, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity));
+    }
+    public void SetSelectedCurve(Curve curve)
+    {
         if (SelectedCurve != null)
             Destroy(SelectedCurve);
-        SelectedCurve = Instantiate(curve, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+        SelectedCurve = curve;
         isPlacingCurve = true;
     }
 }
