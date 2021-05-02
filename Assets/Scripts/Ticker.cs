@@ -5,6 +5,8 @@ using UnityEngine;
 public class Ticker : MonoBehaviour
 {
 
+
+
     public TickerItem tickerItemPrefab; //this is where we get the prefab item to populate our ticker  
     [Range(1f, 40f)]
     public float itemDuration = 10.0f;
@@ -19,8 +21,8 @@ public class Ticker : MonoBehaviour
     {
         width = GetComponent<RectTransform>().rect.width;
         pixelsPerSecond = (width / itemDuration)/2.0f;
-        AddTickerItem(fillerItems[0]); 
-        
+        AddTickerItem(fillerItems[0]);
+
     }
 
     // Update is called once per frame

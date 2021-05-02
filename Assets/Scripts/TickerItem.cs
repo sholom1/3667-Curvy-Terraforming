@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TickerItem : MonoBehaviour
 {
 
+    
     float tickerWidth;
     float pixelsPerSecond;
     RectTransform rt; 
@@ -17,6 +18,7 @@ public class TickerItem : MonoBehaviour
         this.tickerWidth = tickerWidth;
         this.pixelsPerSecond = pixelsPerSecond;
         rt = GetComponent<RectTransform>();
+
         GetComponent<Text>().text = message + "  "; 
     }
 

@@ -15,4 +15,14 @@ public class MainMenu : MonoBehaviour
         Application.Quit(); 
     }
 
+    public void GoToOptions()
+    {
+        SceneManager.LoadScene("Options");
+    }
+
+    public void GoToHowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
+
 }
