@@ -888,10 +888,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: "When traveling the Tianzi Shan Mountains, \nuse the arrow keys to move
     LEFT & RIGHT.  \r\n\r\nReplace missing terrain to complete\nyour journey and
-    discover the region.\r\n\r\nClick 'B' to enter Build Mode, \nto start building
-    new terrain.\r\n\r\nUse the mouse to drag control points on the terrain, use
-    it to adjust their sizes and angles. \n\nSee how the functions change \nas you
-    move each curve!"
+    discover the region.\r\n\r\nClick 'B' to enter Build Mode, \nand start building
+    new terrain.\r\n\r\nUse the mouse to drag control points on the terrain, in order
+    to adjust their sizes and angles. \n\nSee how the functions change \nas you move
+    each curve!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

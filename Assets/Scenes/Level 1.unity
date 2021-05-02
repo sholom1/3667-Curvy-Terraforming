@@ -2525,7 +2525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 557301117}
   m_Layer: 0
-  m_Name: staticAnchors
+  m_Name: StaticAnchors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7041,6 +7041,7 @@ MonoBehaviour:
   _SelectedAnchor: {fileID: 0}
   _PreviousAnchor: {fileID: 0}
   StaticAnchors: []
+  isInBuildMode: 0
 --- !u!4 &1481114120
 Transform:
   m_ObjectHideFlags: 0
