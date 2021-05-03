@@ -5,15 +5,18 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float walkSpeed = 10.0f;
+    [SerializeField]
+    private float targetSpeed = 10.0f;
+    [SerializeField]
+    private bool AWD = true;
     [SerializeField]
     private new Rigidbody2D rigidbody;
-    private WheelsRotate[] wheels;
+    private WheelJoint2D[] wheels;
     private float inputAxis;
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        wheels = GetComponentsInChildren<WheelsRotate>();
+        wheels = GetComponentsInChildren<WheelJoint2D>();
         CurveManager.instance.OnToggleBuildMode.AddListener(value => CanMove = !value);
     }
     private void Update()
@@ -25,10 +28,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            if (inputAxis < 0)
-                rigidbody.velocity = new Vector3(inputAxis * walkSpeed, rigidbody.velocity.y);
-            if (inputAxis > 0)
-                rigidbody.velocity = new Vector3(inputAxis * walkSpeed, rigidbody.velocity.y);
+            for (int i = 0; i < (AWD ? wheels.Length : 1); i++)
+            {
+                JointMotor2D jointMotor2D = wheels[i].motor;
+                jointMotor2D.motorSpeed = -(inputAxis * targetSpeed);
+                wheels[i].motor = jointMotor2D;
+            }
         }
     }
     private bool canMove = true;
