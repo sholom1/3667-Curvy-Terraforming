@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         wheels = GetComponentsInChildren<WheelJoint2D>();
-        CurveManager.instance.OnToggleBuildMode.AddListener(value => CanMove = !value);
+        if (CurveManager.instance)
+            CurveManager.instance.OnToggleBuildMode.AddListener(value => CanMove = !value);
     }
     private void Update()
     {
@@ -45,7 +46,8 @@ public class PlayerMovement : MonoBehaviour
             if (value != canMove)
             {
                 canMove = value;
-                Array.ForEach(wheels, wheel => wheel.enabled = value);
+                Array.ForEach(wheels, wheel => wheel.connectedBody.simulated = value);
+                rigidbody.simulated = value;
             }
         }
     }
