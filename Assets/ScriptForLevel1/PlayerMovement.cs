@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 canMove = value;
                 Array.ForEach(wheels, wheel => wheel.connectedBody.simulated = value);
-                rigidbody.simulated = value;
+                rigidbody.constraints = value ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezeAll;
             }
         }
     }
