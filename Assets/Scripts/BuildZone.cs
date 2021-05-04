@@ -6,6 +6,7 @@ using Cinemachine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class BuildZone : MonoBehaviour
 {
+    public static BuildZone LastBuildZone;
     [SerializeField]
     private CinemachineVirtualCamera BuildView;
     [SerializeField]
@@ -15,6 +16,9 @@ public class BuildZone : MonoBehaviour
         if (collision.TryGetComponent(out PlayerMovement player) && CurveManager.instance != null)
         {
             CurveManager.instance.isInBuildZone = true;
+            if (LastBuildZone != this && LastBuildZone != null)
+                CurveManager.instance.OnToggleBuildMode.RemoveListener(LastBuildZone.ToggleBuildMode);
+            LastBuildZone = this;
             CurveManager.instance.OnToggleBuildMode.AddListener(ToggleBuildMode);
         }
     }
@@ -23,7 +27,6 @@ public class BuildZone : MonoBehaviour
         if (collision.TryGetComponent(out PlayerMovement player) && CurveManager.instance != null)
         {
             CurveManager.instance.isInBuildZone = false;
-            CurveManager.instance.OnToggleBuildMode.RemoveListener(ToggleBuildMode);
         }
     }
     private void ToggleBuildMode(bool value)

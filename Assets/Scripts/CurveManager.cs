@@ -37,13 +37,23 @@ public class CurveManager : MonoBehaviour
         }
         if (isInBuildZone && Input.GetKeyDown(KeyCode.B))
         {
-            if (SelectedCurve != null)
-                Destroy(SelectedCurve);
-            ButtonContainter.SetActive(!ButtonContainter.activeInHierarchy);
-            OnToggleBuildMode.Invoke(ButtonContainter.activeInHierarchy);
+            ToggleBuildMode();
         }
-        
+
     }
+
+    public void ToggleBuildMode()
+    {
+        ToggleBuildMode(ButtonContainter.activeInHierarchy);
+    }
+    public void ToggleBuildMode(bool value)
+    {
+        if (SelectedCurve != null)
+            Destroy(SelectedCurve);
+        ButtonContainter.SetActive(!value);
+        OnToggleBuildMode.Invoke(!value);
+    }
+
     public void SpawnCurve(Curve curve)
     {
         SetSelectedCurve(Instantiate(curve, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity));

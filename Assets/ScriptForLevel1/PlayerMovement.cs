@@ -5,6 +5,12 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance;
+    private void Awake()
+    {
+        if (instance != null) Destroy(instance.gameObject);
+        instance = this;
+    }
     [SerializeField]
     private float targetSpeed = 10.0f;
     [SerializeField]
