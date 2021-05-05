@@ -15,11 +15,6 @@ public class CurveSpawner : MonoBehaviour
     private GameObject CurrentCurveParent;
     [SerializeField]
     private GameObject NextCurveParent;
-    [SerializeField]
-    private TextMeshProUGUI BudgetText;
-    private int budget;
-    [SerializeField]
-    private int dCost, sCost;
 
     private void Start()
     {
@@ -33,8 +28,7 @@ public class CurveSpawner : MonoBehaviour
     {
         Curve curve = GetNextCurve();
         curve.MarkStatic(asStatic);
-        budget += asStatic ? sCost : dCost;
-        BudgetText.text = $"Money spent: {budget}";
+        ScoreManager.instance.BuyCurve(curve);
         CurveManager.instance.SetSelectedCurve(curve);
     }
     public Curve GetNextCurve()

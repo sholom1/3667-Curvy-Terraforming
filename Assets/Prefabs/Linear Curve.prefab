@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 991161247031749604}
   - component: {fileID: 991161247031749606}
   - component: {fileID: 991161247031749607}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Linear Curve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.2
   m_Points:
   - {x: -3.38, y: -1.025}
   - {x: 3.81, y: 2.591}

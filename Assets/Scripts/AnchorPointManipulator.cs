@@ -92,6 +92,7 @@ public class AnchorPointManipulator : MonoBehaviour
 
     private void SetSelectedAnchor(Vector2 mouseWorldPos)
     {
+        if (CurveManager.instance.isPlacingCurve) return;
         RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, camera.transform.forward, float.MaxValue, AnchorLayer);
         if (hit.collider != null && hit.collider.TryGetComponent(out AnchorPoint anchor))
         {

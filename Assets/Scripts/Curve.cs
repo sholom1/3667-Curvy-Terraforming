@@ -12,6 +12,8 @@ public abstract class Curve: MonoBehaviour
     public AnchorPoint StartAnchor;
     public AnchorPoint EndAnchor;
 
+    public bool IsStatic;
+
     protected virtual void Awake()
     {
         edgeCollider = GetComponent<EdgeCollider2D>();
@@ -42,6 +44,7 @@ public abstract class Curve: MonoBehaviour
     }
     public virtual void MarkStatic(bool value)
     {
+        IsStatic = value;
         StartAnchor.isStatic = value;
         EndAnchor.isStatic = value;
     }

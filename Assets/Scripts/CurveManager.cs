@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CurveManager : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class CurveManager : MonoBehaviour
     private new Camera camera;
     [SerializeField]
     private GameObject ButtonContainter;
+    [SerializeField]
+    private LayerMask CurveLayer, AnchorLayer;
+    [SerializeField]
+    public Button DeleteCurveButton;
     private void Awake()
     {
         if (instance != null) Destroy(instance);
@@ -25,21 +30,20 @@ public class CurveManager : MonoBehaviour
     {
         if (isPlacingCurve && Input.GetKeyDown(KeyCode.Mouse0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            Debug.Log("Placing Curve");
-            SelectedCurve.edgeCollider.enabled = true;
-            SelectedCurve = null;
-            isPlacingCurve = false;
+            DeselectCurve();
         }
         if (SelectedCurve != null)
         {
             Vector2 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
             SelectedCurve.transform.position = mouseWorldPos;
         }
-        if (isInBuildZone && Input.GetKeyDown(KeyCode.B))
+        if (isInBuildZone)
         {
-            ToggleBuildMode();
+            if (Input.GetKeyDown(KeyCode.B))
+                ToggleBuildMode();
+            if (!isPlacingCurve && Input.GetKeyDown(KeyCode.Mouse0) && TryGetCurve(out Curve hitCurve))
+                SetSelectedCurve(hitCurve);
         }
-
     }
 
     public void ToggleBuildMode()
@@ -49,20 +53,51 @@ public class CurveManager : MonoBehaviour
     public void ToggleBuildMode(bool value)
     {
         if (SelectedCurve != null)
-            Destroy(SelectedCurve);
+            Destroy(SelectedCurve.gameObject);
         ButtonContainter.SetActive(!value);
         OnToggleBuildMode.Invoke(!value);
     }
-
     public void SpawnCurve(Curve curve)
     {
         SetSelectedCurve(Instantiate(curve, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity));
     }
     public void SetSelectedCurve(Curve curve)
     {
+        if (SelectedCurve == curve) return;
+        DeleteCurveButton.gameObject.SetActive(true);
         if (SelectedCurve != null)
-            Destroy(SelectedCurve);
+            Destroy(SelectedCurve.gameObject);
         SelectedCurve = curve;
         isPlacingCurve = true;
+    }
+    public void DeselectCurve()
+    {
+        DeleteCurveButton.gameObject.SetActive(false);
+        if (SelectedCurve != null)
+        {
+            SelectedCurve.edgeCollider.enabled = true;
+            SelectedCurve = null;
+        }
+        isPlacingCurve = false;
+    }
+    public void DeleteCurve()
+    {
+        if (SelectedCurve == null) return;
+        ScoreManager.instance.SellCurve(SelectedCurve);
+        Destroy(SelectedCurve.gameObject);
+        DeselectCurve();
+    }
+    public bool TryGetCurve(out Curve curve)
+    {
+        Vector2 mouseWorldPos = camera.ScreenToWorldPoint(Input.mousePosition);
+        curve = null;
+        RaycastHit2D hitAnchor = Physics2D.Raycast(mouseWorldPos, camera.transform.forward, float.MaxValue, AnchorLayer);
+        if (hitAnchor.collider != null) return false;
+        RaycastHit2D hitCurve = Physics2D.Raycast(mouseWorldPos, camera.transform.forward, float.MaxValue, CurveLayer);
+        if (hitCurve.collider != null && hitCurve.collider.TryGetComponent(out curve))
+        {
+            return true;
+        }
+        return false;
     }
 }
