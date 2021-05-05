@@ -19,7 +19,7 @@ public class CurveManager : MonoBehaviour
     [SerializeField]
     private LayerMask CurveLayer, AnchorLayer;
     [SerializeField]
-    public Button DeleteCurveButton;
+    public Button DeleteCurveButton, ToggleCurvePickerButton;
     private void Awake()
     {
         if (instance != null) Destroy(instance);
@@ -69,10 +69,12 @@ public class CurveManager : MonoBehaviour
             Destroy(SelectedCurve.gameObject);
         SelectedCurve = curve;
         isPlacingCurve = true;
+        AnimateCurveManager(false);
     }
     public void DeselectCurve()
     {
         DeleteCurveButton.gameObject.SetActive(false);
+        AnimateCurveManager(true);
         if (SelectedCurve != null)
         {
             SelectedCurve.edgeCollider.enabled = true;
@@ -86,6 +88,12 @@ public class CurveManager : MonoBehaviour
         ScoreManager.instance.SellCurve(SelectedCurve);
         Destroy(SelectedCurve.gameObject);
         DeselectCurve();
+    }
+    public void AnimateCurveManager(bool value)
+    {
+        ToggleCurvePickerButton.onClick.RemoveAllListeners();
+        ToggleCurvePickerButton.onClick.AddListener(() => AnimateCurveManager(!value));
+        ButtonContainter.GetComponent<Animator>().SetBool("Show", value);
     }
     public bool TryGetCurve(out Curve curve)
     {
