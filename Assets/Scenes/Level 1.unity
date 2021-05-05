@@ -7172,6 +7172,14 @@ MonoBehaviour:
       m_Calls: []
   isInBuildZone: 0
   ButtonContainter: {fileID: 1995384807}
+  CurveLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  AnchorLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  DeleteCurveButton: {fileID: 0}
+  ToggleCurvePickerButton: {fileID: 0}
 --- !u!114 &1481114119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8303,7 +8311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705328336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.4, y: 4.1912613, z: -10}
+  m_LocalPosition: {x: 0.41575575, y: 4.1912613, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13940,6 +13948,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b975d7a8d578341b6baada533a04cedd, type: 3}
+--- !u!1001 &6153302143416617873
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2812863445782197016, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812863445782197016, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812863445782197016, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812863445782197016, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812863445782197016, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812863445782197016, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812863445782197016, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812863445782197016, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812863445782197016, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812863445782197016, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812863445782197016, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858895405617530204, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
+      propertyPath: m_Name
+      value: CustomTexturePack_0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1b5c9c9d4361141de96420e752c8ea9a, type: 3}
 --- !u!1001 &6774290418244953439
 PrefabInstance:
   m_ObjectHideFlags: 0
