@@ -24,5 +24,8 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("HowToPlay");
     }
-
+    public void LoadScene(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
 }
