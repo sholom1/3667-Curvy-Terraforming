@@ -41,7 +41,7 @@ public class CurveManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.B))
                 ToggleBuildMode();
-            if (!isPlacingCurve && Input.GetKeyDown(KeyCode.Mouse0) && TryGetCurve(out Curve hitCurve))
+            if (!isPlacingCurve && Input.GetKeyDown(KeyCode.Mouse0) && !EventSystem.current.IsPointerOverGameObject() && TryGetCurve(out Curve hitCurve))
                 SetSelectedCurve(hitCurve);
         }
     }
