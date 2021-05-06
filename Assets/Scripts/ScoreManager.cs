@@ -30,4 +30,8 @@ public class ScoreManager : MonoBehaviour
         budget += value;
         BudgetText.text = $"Money spent: {budget}";
     }
+    public void CacheScore()
+    {
+        PlayerPrefs.SetInt("score", budget);
+    }
 }
