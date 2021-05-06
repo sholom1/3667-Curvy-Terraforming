@@ -27,12 +27,16 @@ public class HighScoreManager : MonoBehaviour
     {
         StartCoroutine(SubmitScore());
     }
+    public void Fetch()
+    {
+        StartCoroutine(FetchScore());
+    }
     private IEnumerator SubmitScore()
     {
         StatusText.text = "Uploading...";
         string playerName = inputField.text.Replace(" ", "%20");
         //string url = UnityWebRequest.EscapeURL($);
-        using (UnityWebRequest request = new UnityWebRequest($"https://us-central1-highscore-manager.cloudfunctions.net/Scores-api/postScore?game=curvy-terraforming-test&playerName={playerName}&score={score}")) {
+        using (UnityWebRequest request = new UnityWebRequest($"https://us-central1-highscore-manager.cloudfunctions.net/Scores-api/postScore?game=curvy-terraforming&playerName={playerName}&score={score}")) {
             request.method = "POST";
             request.downloadHandler = new DownloadHandlerBuffer();
             yield return request.SendWebRequest();
@@ -56,7 +60,7 @@ public class HighScoreManager : MonoBehaviour
     private IEnumerator FetchScore()
     {
         StatusText.text = "Fetching Scores...";
-        using (UnityWebRequest request = new UnityWebRequest("https://us-central1-highscore-manager.cloudfunctions.net/Scores-api/fetchScores?game=curvy-terraforming-test"))
+        using (UnityWebRequest request = new UnityWebRequest("https://us-central1-highscore-manager.cloudfunctions.net/Scores-api/fetchScores?game=curvy-terraforming"))
         {
             request.method = "GET";
             request.downloadHandler = new DownloadHandlerBuffer();
@@ -73,6 +77,11 @@ public class HighScoreManager : MonoBehaviour
                 case UnityWebRequest.Result.Success:
                     string data = $"{{\"scores\": {request.downloadHandler.text}}}";
                     HighScores recievedScores = JsonUtility.FromJson<HighScores>(data);
+                    recievedScores.scores.Add(new ScoreData
+                    {
+                        playerName = inputField.text,
+                        score = score
+                    });
                     StatusText.gameObject.SetActive(false);
                     ScoreView.SetActive(true);
                     PriorityQueue<ScoreData, int> sortedScores = recievedScores.ToPriorityQueue();
@@ -94,10 +103,10 @@ public class HighScores
     public List<ScoreData> scores;
     public PriorityQueue<ScoreData, int> ToPriorityQueue()
     {
-        PriorityQueue<ScoreData, int> sortedScores = new PriorityQueue<ScoreData, int>(0);
+        PriorityQueue<ScoreData, int> sortedScores = new PriorityQueue<ScoreData, int>(int.MinValue);
         foreach(ScoreData score in scores)
         {
-            sortedScores.Insert(score, int.MaxValue - score.score);
+            sortedScores.Insert(score, int.MinValue + score.score);
         }
         return sortedScores;
     }
