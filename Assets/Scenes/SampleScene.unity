@@ -4992,7 +4992,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.6144934, y: 6.256375, z: -10}
+  m_LocalPosition: {x: -7.2902937, y: 6.256375, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5043,8 +5043,31 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Press B to select building options.
 
+        Dynamic curves allows
+        custom measurements.
+
+        Static curves offers cheap but already made
+        measurements.
+
+
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283732550878995424, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_fontSize
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283732550878995424, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_margin.y
+      value: 5.595712
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283732550878995424, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211200387117848565, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2221345405994013344, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
       propertyPath: m_RootOrder
@@ -5093,6 +5116,46 @@ PrefabInstance:
     - target: {fileID: 2221345405994013349, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
       propertyPath: m_Name
       value: HatOnAStick_0 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891177233205294531, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 107.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891177233205294531, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 36.9512
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891177233205294531, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.1457
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891177233205294531, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.2543
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145185170843151434, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145185170843151434, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850553922106875895, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 13.7792
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850553922106875895, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 6.999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850553922106875895, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5319
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850553922106875895, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.9183
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dc1d7a7d32c145339fd5d4b68644ce9, type: 3}
