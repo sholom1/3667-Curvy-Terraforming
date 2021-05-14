@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5316795410964404424}
   m_Layer: 0
   m_Name: FrontWheel
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,8 +221,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 1.9516348
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c2e579e306141dfaefa314646ddef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSpeed: 1000
+  targetSpeed: 5000
   AWD: 1
   rigidbody: {fileID: 0}
 --- !u!235 &6225684373800718050
@@ -396,7 +396,7 @@ WheelJoint2D:
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 100000
 --- !u!235 &4935331535725305074
 WheelJoint2D:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ WheelJoint2D:
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 100000
 --- !u!1 &3531926364563491622
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 7966810241889450653}
   m_Layer: 0
   m_Name: BackWheel
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
