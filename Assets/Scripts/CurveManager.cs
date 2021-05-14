@@ -20,6 +20,7 @@ public class CurveManager : MonoBehaviour
     private LayerMask CurveLayer, AnchorLayer;
     [SerializeField]
     public Button DeleteCurveButton, ToggleCurvePickerButton;
+    public bool isInBuildMode => ButtonContainter.activeInHierarchy;
     private void Awake()
     {
         if (instance != null) Destroy(instance);
@@ -41,7 +42,7 @@ public class CurveManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.B))
                 ToggleBuildMode();
-            if (!isPlacingCurve && Input.GetKeyDown(KeyCode.Mouse0) && !EventSystem.current.IsPointerOverGameObject() && TryGetCurve(out Curve hitCurve))
+            if (isInBuildMode && !isPlacingCurve && Input.GetKeyDown(KeyCode.Mouse0) && !EventSystem.current.IsPointerOverGameObject() && TryGetCurve(out Curve hitCurve))
                 SetSelectedCurve(hitCurve);
         }
     }
