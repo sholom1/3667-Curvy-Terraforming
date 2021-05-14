@@ -408,8 +408,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  requireTag: 0
-  targetTag: 
+  requireTag: 1
+  targetTag: Player
   time: 10
 --- !u!1 &9093495440982251306
 GameObject:
