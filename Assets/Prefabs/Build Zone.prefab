@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuildView: {fileID: 1282751240542185816}
   Priority: 15
+  scaleScalar: 1
 --- !u!1 &6657116965906159760
 GameObject:
   m_ObjectHideFlags: 0

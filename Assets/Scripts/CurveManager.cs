@@ -11,6 +11,7 @@ public class CurveManager : MonoBehaviour
     public List<Curve> ActiveCurves;
     public bool isPlacingCurve;
     public UnityEvent<bool> OnToggleBuildMode;
+    public UnityEvent<Curve> OnSelectCurve;
     public bool isInBuildZone;
     private Curve SelectedCurve;
     private new Camera camera;

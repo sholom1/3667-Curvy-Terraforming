@@ -30,6 +30,7 @@ public class CurveSpawner : MonoBehaviour
         curve.MarkStatic(asStatic);
         ScoreManager.instance.BuyCurve(curve);
         CurveManager.instance.SetSelectedCurve(curve);
+        CurveManager.instance.OnSelectCurve.Invoke(curve);
     }
     public Curve GetNextCurve()
     {
