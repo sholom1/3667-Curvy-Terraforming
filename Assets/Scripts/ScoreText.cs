@@ -5,6 +5,7 @@ using TMPro;
 
 public class ScoreText : MonoBehaviour
 {
+    public TextMeshProUGUI Index;
     public TextMeshProUGUI Name;
     public TextMeshProUGUI Score;
 }
