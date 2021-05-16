@@ -11,8 +11,7 @@ public class BuildZone : MonoBehaviour
     private CinemachineVirtualCamera BuildView;
     [SerializeField]
     private int Priority;
-    [SerializeField]
-    private int scaleScalar;
+    public int scaleScalar;
     private HashSet<Curve> curves = new HashSet<Curve>();
     private AnchorPoint[] staticAnchors;
 

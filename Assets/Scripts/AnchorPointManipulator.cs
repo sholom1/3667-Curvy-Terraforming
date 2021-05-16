@@ -6,8 +6,9 @@ public class AnchorPointManipulator : MonoBehaviour
 {
     [SerializeField]
     private LayerMask AnchorLayer;
-    
-    public float ConnectionRange;
+    [SerializeField]
+    private float connectionRange;
+    public float ConnectionRange => BuildZone.LastBuildZone != null ? connectionRange * BuildZone.LastBuildZone.scaleScalar : connectionRange;
     [SerializeField]
     private AnchorLink _AnchorLinkPrefab;
 

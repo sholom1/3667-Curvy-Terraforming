@@ -21640,7 +21640,7 @@ MonoBehaviour:
   AnchorLayer:
     serializedVersion: 2
     m_Bits: 64
-  ConnectionRange: 1
+  connectionRange: 1
   _AnchorLinkPrefab: {fileID: 2367667115090861345, guid: b0a5cc06e413015408d798c367ce5b6d, type: 3}
   _SelectedAnchor: {fileID: 0}
   _PreviousAnchor: {fileID: 0}
