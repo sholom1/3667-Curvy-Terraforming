@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HorizontalAutoMove : MonoBehaviour
 {
-    [SerializeField] Vector3 movement;
-	[SerializeField] Rigidbody2D rigid;
+    //[SerializeField] Vector3 movement;
+	//[SerializeField] Rigidbody2D rigid;
 	//[SerializeField] float speed = 10.0f;
 	//[SerializeField] bool isFacingRight = false;
     //[SerializeField] bool isFacingLeft = false;
