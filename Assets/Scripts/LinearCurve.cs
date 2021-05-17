@@ -5,10 +5,6 @@ using TMPro;
 using static CurveFunctions;
 public class LinearCurve : Curve
 {
-    [SerializeField]
-    private TextMeshProUGUI slope, slopeDenominator, slopeNumerator, function;
-    [SerializeField]
-    private GameObject fractionContainer;
     public override void Compute()
     {
         Vector2[] points2D = new Vector2[] { StartAnchor.transform.localPosition, EndAnchor.transform.localPosition };
@@ -21,13 +17,14 @@ public class LinearCurve : Curve
     public override void UpdateCurveFunction()
     {
         Vector2 diff = StartAnchor.transform.position - EndAnchor.transform.position;
-
-        fractionContainer.SetActive(true);
+        LinearCurveText linearCurveText = CurveManager.instance.LinearCurveText;
+        linearCurveText.gameObject.SetActive(true);
+        CurveManager.instance.QuadraticCurveText.gameObject.SetActive(false);
         float slope = diff.x / diff.y;
         Fraction fraction = RealToFraction(slope, 0.01);
-        slopeNumerator.text = fraction.N.ToString();
-        slopeDenominator.text = fraction.D.ToString();
+        linearCurveText.A.Numerator.text = fraction.N.ToString();
+        linearCurveText.A.Denominator.text = fraction.D.ToString();
         float b = StartAnchor.transform.position.y - (slope * StartAnchor.transform.position.x);
-        function.text = $"x + {b.ToString("0.00")}";
+        linearCurveText.function.text = $"x + {b.ToString("0.00")}";
     }
 }

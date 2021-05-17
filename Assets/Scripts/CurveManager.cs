@@ -19,8 +19,9 @@ public class CurveManager : MonoBehaviour
     private GameObject ButtonContainter;
     [SerializeField]
     private LayerMask CurveLayer, AnchorLayer;
-    [SerializeField]
     public Button DeleteCurveButton, ToggleCurvePickerButton;
+    public LinearCurveText LinearCurveText;
+    public QuadraticCurveText QuadraticCurveText;
     public bool isInBuildMode => ButtonContainter.activeInHierarchy;
     private void Awake()
     {
@@ -70,6 +71,7 @@ public class CurveManager : MonoBehaviour
         if (SelectedCurve != null)
             Destroy(SelectedCurve.gameObject);
         SelectedCurve = curve;
+        SelectedCurve.UpdateCurveFunction();
         isPlacingCurve = true;
         AnimateCurveManager(false);
     }
@@ -82,6 +84,8 @@ public class CurveManager : MonoBehaviour
             SelectedCurve.edgeCollider.enabled = true;
             SelectedCurve = null;
         }
+        LinearCurveText.gameObject.SetActive(false);
+        QuadraticCurveText.gameObject.SetActive(false);
         isPlacingCurve = false;
     }
     public void DeleteCurve()

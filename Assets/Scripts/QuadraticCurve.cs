@@ -11,8 +11,6 @@ public class QuadraticCurve : Curve
     [SerializeField]
     [Range(10, 200)]
     private int _Iterations;
-    [SerializeField]
-    TextMeshProUGUI aNumerator, aDenominator, bNumerator, bDenominator, cText;
 
     private float curveLength;
 
@@ -49,11 +47,14 @@ public class QuadraticCurve : Curve
         float c = startPos.y - (a * (startPos.x * startPos.x) + b * startPos.x);
         Fraction aFrac = RealToFraction(a, .01);
         Fraction bFrac = RealToFraction(b, .01);
-        aNumerator.text = aFrac.N.ToString();
-        aDenominator.text = aFrac.D.ToString();
-        bNumerator.text = bFrac.N.ToString();
-        bDenominator.text = bFrac.D.ToString();
-        cText.text = c.ToString("0.00");
+        QuadraticCurveText quadraticCurveText = CurveManager.instance.QuadraticCurveText;
+        quadraticCurveText.gameObject.SetActive(true);
+        CurveManager.instance.LinearCurveText.gameObject.SetActive(false);
+        quadraticCurveText.A.Numerator.text = aFrac.N.ToString();
+        quadraticCurveText.A.Denominator.text = aFrac.D.ToString();
+        quadraticCurveText.B.Numerator.text = bFrac.N.ToString();
+        quadraticCurveText.B.Denominator.text = bFrac.D.ToString();
+        quadraticCurveText.function.text = $"x + {c.ToString("0.00")}";
     }
     public override void MarkStatic(bool value)
     {
